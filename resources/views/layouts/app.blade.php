@@ -37,7 +37,7 @@
                             </div>
                             <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link align-middle px-0 text-white">
+                                    <a href="{{route('admin.index')}}" class="nav-link align-middle px-0 text-white">
                                         <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
                                     </a>
                                 </li>
@@ -47,7 +47,7 @@
                                     </a>
                                     <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
                                         <li>
-                                            <a href="#" class="nav-link px-0"> 
+                                            <a href="{{route('admin.posts.index')}}" class="nav-link px-0"> 
                                                 <i class="bi bi-card-image"></i>
                                                 <span class="d-none d-sm-inline">All Posts</span>
                                             </a>
