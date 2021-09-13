@@ -30,14 +30,14 @@
 
                 <!-- start SIDEBAR -->
                 @auth
-                    <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+                    <div class="col-auto col-md-3 col-xl-2 px-0 bg-dark">
+                        <div  class="d-flex align-items-center justify-content-center text-white bg-primary text-decoration-none">
+                            <span class="fs-5 d-none d-sm-inline py-3">Dashboard</span>
+                        </div>
                         <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-                            <div  class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                                <i class="bi bi-speedometer"></i><span class="fs-5 d-none d-sm-inline">Dashboard</span>
-                            </div>
                             <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                                 <li class="nav-item">
-                                    <a href="{{route('admin.index')}}" class="nav-link align-middle px-0 text-white">
+                                    <a href="{{route('admin.index')}}" class="nav-link align-middle px-0">
                                         <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
                                     </a>
                                 </li>
@@ -46,14 +46,14 @@
                                         <i class="bi bi-card-list"></i></i> <span class="ms-1 d-none d-sm-inline">Posts</span> 
                                     </a>
                                     <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
-                                        <li>
+                                        <li class=" w-100 px-3">
                                             <a href="{{route('admin.posts.index')}}" class="nav-link px-0"> 
                                                 <i class="bi bi-card-image"></i>
                                                 <span class="d-none d-sm-inline">All Posts</span>
                                             </a>
                                         </li>
-                                        <li class="w-100">
-                                            <a href="#" class="nav-link px-0"> 
+                                        <li class="w-100 px-3">
+                                            <a href="{{route('admin.posts.create')}}" class="nav-link px-0"> 
                                                 <i class="bi bi-plus-square"></i>
                                                 <span class="d-none d-sm-inline">Add Post</span>
                                             </a>
@@ -61,7 +61,7 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="#" class="nav-link px-0 align-middle text-white">
+                                    <a href="#" class="nav-link px-0 align-middle">
                                         <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Users</span> </a>
                                 </li>
                                 <li>
