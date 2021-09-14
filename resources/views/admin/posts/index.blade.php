@@ -7,7 +7,7 @@
         @if (session('delete'))
             <!-- DELETE SESSION -->
             <div class="alert alert-danger d-flex align-items-center" role="alert">
-                <i class="bi bi-exclamation-triangle-fill"></i>
+                <i class="bi bi-exclamation-triangle-fill" style="font-size: 1.5rem;"></i>
                 <div class="px-2">
                     {{session('delete')}}
                 </div>
@@ -16,16 +16,16 @@
         @elseif(session('edit'))
             <!-- EDIT SESSION -->
             <div class="alert alert-success d-flex align-items-center" role="alert">
-                <i class="bi bi-check-circle-fill"></i>
+                <i class="bi bi-check-circle-fill" style="font-size: 1.5rem;"></i>
                 <div class="px-2">
                     {{session('edit')}}
                 </div>
             </div>
         @else
             <div class="alert alert-primary d-flex align-items-center" role="alert">
-                <i class="bi bi-info-circle-fill"></i>
-                <div class="px-2">
-                    This is the notification box. All the updates will displayed here.
+                <i class="bi bi-info-circle-fill" style="font-size: 1.5rem;"></i>
+                <div class="px-3">
+                    <span>This is the notification box. All the updates will displayed here.</span>
                 </div>
             </div>
         @endif

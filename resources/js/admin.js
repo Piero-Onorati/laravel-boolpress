@@ -1,4 +1,4 @@
-require('./bootstrap');
+// require('./bootstrap');
 
 const deleteForm = document.querySelectorAll('.delete-post-form');
 

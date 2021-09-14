@@ -32,29 +32,31 @@
                 @auth
                     <div class="col-auto col-md-3 col-xl-2 px-0 bg-dark">
                         <div  class="d-flex align-items-center justify-content-center text-white bg-primary text-decoration-none">
-                            <span class="fs-5 d-none d-sm-inline py-3">Dashboard</span>
+                            <span class="d-none d-sm-inline py-3">Dashboard</span>
                         </div>
                         <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
                             <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-                                <li class="nav-item">
-                                    <a href="{{route('admin.index')}}" class="nav-link align-middle px-0">
-                                        <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
+                                <li>
+                                    <a href="{{route('admin.index')}}" class="nav-link align-middle px-0 ">
+                                        <i class="bi-house" style="font-size:1.1rem;"></i> 
+                                        <h6 class="ms-2 d-none d-sm-inline">Home</h6>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle dropdown-toggle">
-                                        <i class="bi bi-card-list"></i></i> <span class="ms-1 d-none d-sm-inline">Posts</span> 
+                                        <i class="bi bi-card-list" style="font-size:1.1rem;"></i>
+                                        <h6 class="ms-2 d-none d-sm-inline">Posts</h6> 
                                     </a>
-                                    <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+                                    <ul class="collapse nav flex-column ms-1" id="submenu3" >
                                         <li class=" w-100 px-3">
                                             <a href="{{route('admin.posts.index')}}" class="nav-link px-0"> 
-                                                <i class="bi bi-card-image"></i>
+                                                <i class="bi bi-card-image" style="font-size:1.1rem;"></i>
                                                 <span class="d-none d-sm-inline">All Posts</span>
                                             </a>
                                         </li>
-                                        <li class="w-100 px-3">
+                                        <li class="w-100 px-3 ">
                                             <a href="{{route('admin.posts.create')}}" class="nav-link px-0"> 
-                                                <i class="bi bi-plus-square"></i>
+                                                <i class="bi bi-plus-square" style="font-size:1.1rem;"></i>
                                                 <span class="d-none d-sm-inline">Add Post</span>
                                             </a>
                                         </li>
@@ -62,15 +64,21 @@
                                 </li>
                                 <li>
                                     <a href="#" class="nav-link px-0 align-middle">
-                                        <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Users</span> </a>
+                                        <i class="bi-people" style="font-size:1.1rem"></i> 
+                                        <h6 class="ms-1 d-none d-sm-inline">Users</h6> 
+                                    </a>
                                 </li>
                                 <li>
                                     <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
-                                        <i class="bi bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Categories</span></a>
+                                        <i class="bi bi-grid" style="font-size:1.1rem"></i> 
+                                        <h6 class="ms-2 d-none d-sm-inline">Categories</h6>
+                                    </a>
                                 </li>
                                 <li>
                                     <a href="#" class="nav-link px-0 align-middle">
-                                        <i class="bi bi-tag-fill"></i> <span class="ms-1 d-none d-sm-inline">Tags</span></a>
+                                        <i class="bi bi-tag-fill" style="font-size:1.1rem"></i> 
+                                        <h6 class="ms-2 d-none d-sm-inline">Tags</h6>
+                                    </a>
                                 </li>
                             </ul>
                             <hr>
@@ -100,33 +108,33 @@
                                 <ul class="navbar-nav ml-auto">
                                     <!-- Authentication Links -->
                                     @guest
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    </li>
+                                    @if (Route::has('register'))
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                         </li>
-                                        @if (Route::has('register'))
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                            </li>
-                                        @endif
-                                    @else
-                                        <li class="nav-item dropdown">
-                                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                                {{ Auth::user()->name }}
+                                    @endif
+                                @else
+                                    <li class="nav-item dropdown">
+                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                            {{ Auth::user()->name }}
+                                        </a>
+        
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                               onclick="event.preventDefault();
+                                                             document.getElementById('logout-form').submit();">
+                                                {{ __('Logout') }}
                                             </a>
-            
-                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                                   onclick="event.preventDefault();
-                                                                 document.getElementById('logout-form').submit();">
-                                                    {{ __('Logout') }}
-                                                </a>
-            
-                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                                    @csrf
-                                                </form>
-                                            </div>
-                                        </li>
-                                    @endguest
+        
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                @csrf
+                                            </form>
+                                        </div>
+                                    </li>
+                                @endguest
                                 </ul>
                             </div>
                         </div>
