@@ -41,7 +41,35 @@ class PostController extends Controller
         $data =$request->all();
         $new_post = new Post();
 
-        $new_post->slug= Str::slug( $data['title'], '-');
+        // Calcolo lo slug
+        $slug = Str::slug($data['title'], '-');
+
+        // salvo lo slug in una variabile temporanea
+        $slug_base = $slug;
+
+        // verifico se lo slug è gia presente
+        $slug_ismatching= Post::where('slug', $slug)->first();
+        
+        // dichiaro una variabile contatore
+        $counter=1;
+
+        // fintanto che lo slug è già presente($slug_ismatching == true)...//
+        while ($slug_ismatching) {
+
+            // aggiungo allo slug di un trattino e il contatore
+            $slug = $slug_base.'-'.$counter;
+
+            // verifico nuovamente se lo slug è gia presente
+            $slug_ismatching= Post::where('slug', $slug)->first();
+
+            // Incremento il contatore
+            $counter++;
+        }
+
+        // $new_post->slug= Str::slug( $data['title'], '-');
+
+        $new_post->slug= $slug;
+
         $new_post->fill($data);
 
         $new_post->save();
@@ -82,6 +110,38 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         $data = $request->all();
+
+        if ($data['title'] != $post->title ) {
+
+            // Calcolo lo slug
+            $slug = Str::slug($data['title'], '-');
+
+            // salvo lo slug in una variabile temporanea
+            $slug_base = $slug;
+
+            // verifico se lo slug è gia presente
+            $slug_ismatching= Post::where('slug', $slug)->first();
+            
+            // dichiaro una variabile contatore
+            $counter=1;
+
+            // fintanto che lo slug è già presente($slug_ismatching == true)...//
+            while ($slug_ismatching) {
+
+                // aggiungo allo slug di un trattino e il contatore
+                $slug = $slug_base.'-'.$counter;
+
+                // verifico nuovamente se lo slug è gia presente
+                $slug_ismatching= Post::where('slug', $slug)->first();
+
+                // Incremento il contatore
+                $counter++;
+            }
+
+            //in ogni caso assegniamo allo slug il valore ottenuto
+            $data['slug'] =$slug;
+        }
+
         $post->update($data);
         return redirect()->route('admin.posts.index');
     }
