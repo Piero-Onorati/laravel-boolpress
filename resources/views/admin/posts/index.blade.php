@@ -2,7 +2,10 @@
 
 @section('content')
     <div class="container">
+
+        <!--start SESSION -->
         @if (session('delete'))
+            <!-- DELETE SESSION -->
             <div class="alert alert-danger d-flex align-items-center" role="alert">
                 <i class="bi bi-exclamation-triangle-fill"></i>
                 <div class="px-2">
@@ -11,6 +14,7 @@
             </div>
             
         @elseif(session('edit'))
+            <!-- EDIT SESSION -->
             <div class="alert alert-success d-flex align-items-center" role="alert">
                 <i class="bi bi-check-circle-fill"></i>
                 <div class="px-2">
@@ -25,8 +29,9 @@
                 </div>
             </div>
         @endif
+        <!--end SESSION -->
        
-        
+        {{-- TABLE --}}
         <table class="table table-hover">
             <thead>
               <tr>
@@ -43,7 +48,7 @@
                         <td class="text-center">
                             <a class="btn btn-primary" href="{{route('admin.posts.show', $post->id)}}">Show</a>
                             <a class="btn btn-secondary" href="{{route('admin.posts.edit', $post->id)}}">Edit</a>
-                            <form action="{{route('admin.posts.destroy', $post->id)}}" method="post" class="d-inline-block">
+                            <form action="{{route('admin.posts.destroy', $post->id)}}" method="post" class="d-inline-block delete-post-form">
                                 @csrf
                                 @method('DELETE')
                                 <input type="submit" value="Delete" class="btn btn-danger">
@@ -53,6 +58,7 @@
                 @endforeach
             </tbody>
         </table>
+
     </div>
     
 @endsection
