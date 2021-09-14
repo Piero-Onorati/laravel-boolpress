@@ -156,7 +156,7 @@ class PostController extends Controller
         }
 
         $post->update($data);
-        return redirect()->route('admin.posts.index');
+        return redirect()->route('admin.posts.index')->with('edit','Post n. ' . $post->id . ' has been updated.');
     }
 
     /**
@@ -168,6 +168,6 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
-        return redirect()->route('admin.posts.index');
+        return redirect()->route('admin.posts.index')->with('delete','Post n. ' . $post->id . ' has been deleted.');
     }
 }

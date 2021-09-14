@@ -2,6 +2,31 @@
 
 @section('content')
     <div class="container">
+        @if (session('delete'))
+            <div class="alert alert-danger d-flex align-items-center" role="alert">
+                <i class="bi bi-exclamation-triangle-fill"></i>
+                <div class="px-2">
+                    {{session('delete')}}
+                </div>
+            </div>
+            
+        @elseif(session('edit'))
+            <div class="alert alert-success d-flex align-items-center" role="alert">
+                <i class="bi bi-check-circle-fill"></i>
+                <div class="px-2">
+                    {{session('edit')}}
+                </div>
+            </div>
+        @else
+            <div class="alert alert-primary d-flex align-items-center" role="alert">
+                <i class="bi bi-info-circle-fill"></i>
+                <div class="px-2">
+                    This is the notification box. All the updates will displayed here.
+                </div>
+            </div>
+        @endif
+       
+        
         <table class="table table-hover">
             <thead>
               <tr>
