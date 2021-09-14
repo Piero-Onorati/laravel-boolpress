@@ -38,6 +38,13 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        // Validazione dati
+        $request->validate([
+            'title'=>'required|max:100',
+            'content'=>'required'
+        ]);
+        
+        
         $data =$request->all();
         $new_post = new Post();
 
@@ -109,6 +116,12 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+        // Validazione dati
+        $request->validate([
+            'title'=>'required|max:100',
+            'content'=>'required'
+        ]);
+        
         $data = $request->all();
 
         if ($data['title'] != $post->title ) {
